@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: dsr-ui
+  name: dsr-ui-service
+  namespace: dsr
+spec:
+  selector:
+    app: dsr-ui
+  ports:
+  - port: 4200
+    targetPort: 4200
+  type: LoadBalancer

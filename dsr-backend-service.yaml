@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dsr-backend-service
+  namespace: dsr
+  labels:
+    app: dsr-backend
+spec:
+  ports:
+    - port: 9081
+      targetPort: 9081
+  selector:
+    app: dsr-backend
+  type: ClusterIp

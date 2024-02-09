@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dsr-backend-api
+  labels:
+    app: dsr-backend
+  namespace: dsr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dsr-backend
+  template:
+    metadata:
+      labels:
+        app: dsr-backend
+    spec:
+      containers:
+      - name: dsr-backend
+        image: 172.27.59.80:8082/docker-local/backend-datadog:3
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9081
+      imagePullSecrets:
+      - name: jfrog

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dsr-ui
+  namespace: telescope
+  labels:
+    app: dsr-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dsr-ui
+  template:
+    metadata:
+      labels:
+        app: dsr-ui
+    spec:
+      containers:
+      - name: dsr-ui
+        image: 172.27.59.80:8082/docker-local/dsr-ui:52
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 4200
+      imagePullSecrets:
+      - name: jfrog
